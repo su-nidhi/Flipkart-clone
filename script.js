@@ -26,34 +26,34 @@ let next = document.querySelector('.next-btn');
 let sliderImages = document.querySelectorAll('.slider .slider-img');
 let indicators = document.querySelectorAll('.indicator');
 
-let count = 0;
+let curntelem = 0;
 
 function handlebutonSlider() {
      sliderImages.forEach((slider, index) => {
-          slider.style.display = index === count ? 'block' : 'none';
+          slider.style.display = index === curntelem ? 'block' : 'none';
      });
 
      indicators.forEach((dot, index) => {
-          dot.classList.toggle('active', index === count)
+          dot.classList.toggle('active', index === curntelem)
      })
-     prev.disabled = count === 0;
-     next.disabled = count === sliderImages.length - 1;
+     prev.disabled = curntelem === 0;
+     next.disabled = curntelem === sliderImages.length - 1;
 }
 function nextSlide() {
-     count = (count + 1) % sliderImages.length;
+     curntelem = (curntelem + 1) % sliderImages.length;
      handlebutonSlider()
 }
 
 setInterval(nextSlide, 2000)
 prev.addEventListener('click', () => {
-     if (count > 0) {
-          count--
+     if (curntelem > 0) {
+          curntelem--
           handlebutonSlider()
      }
 });
 next.addEventListener('click', () => {
-     if (count < sliderImages.length - 1) {
-          count++
+     if (curntelem < sliderImages.length - 1) {
+          curntelem++
           handlebutonSlider()
      }
 })
@@ -104,79 +104,93 @@ let ElectronicsProduct = [
           prize: 'from 6599'
      },
 ];
+let productContainer = document.querySelector('.products');
+ElectronicsProduct.forEach((item) => {
+
+     productContainer.innerHTML += `
+<div class="slider-product">
+<img class="product-img" src="${item.img}" alt="">
+<div class="product-text">
+<p>${item.name}</p>
+<p class="b">${item.prize}</p>
+</div>
+</div>`;
+     console.log( item)
+});
+
 
 let beautyToysProducts = [
-  {
-    img: '', // coffee powder image path
-    name: 'Coffee Powder',
-    price: 'Upto 80% Off'
-  },
-  {
-    img: '', // soft toys image path
-    name: 'Soft Toys',
-    price: 'Upto 70% Off'
-  },
-  {
-    img: '', // stationery image path
-    name: 'Top Selling Stationery',
-    price: 'From ₹49'
-  },
-  {
-    img: '', // remote toy image path
-    name: 'Remote Control Toys',
-    price: 'Up to 80% Off'
-  },
-  {
-    img: '', // action toys image path
-    name: 'Best of Action Toys',
-    price: 'Up to 70% Off'
-  },
-  {
-    img: '', // dry fruits image path
-    name: 'Dry Fruits',
-    price: 'Upto 75% Off'
-  },
-  {
-    img: '', // cycle image path
-    name: 'Geared Cycles',
-    price: 'Up to 70% Off'
-  },
-  {
-    img: '', // peanut butter image path
-    name: 'Food Spreads',
-    price: 'Upto 75% Off'
-  }
+     {
+          img: '', // coffee powder image path
+          name: 'Coffee Powder',
+          price: 'Upto 80% Off'
+     },
+     {
+          img: '', // soft toys image path
+          name: 'Soft Toys',
+          price: 'Upto 70% Off'
+     },
+     {
+          img: '', // stationery image path
+          name: 'Top Selling Stationery',
+          price: 'From ₹49'
+     },
+     {
+          img: '', // remote toy image path
+          name: 'Remote Control Toys',
+          price: 'Up to 80% Off'
+     },
+     {
+          img: '', // action toys image path
+          name: 'Best of Action Toys',
+          price: 'Up to 70% Off'
+     },
+     {
+          img: '', // dry fruits image path
+          name: 'Dry Fruits',
+          price: 'Upto 75% Off'
+     },
+     {
+          img: '', // cycle image path
+          name: 'Geared Cycles',
+          price: 'Up to 70% Off'
+     },
+     {
+          img: '', // peanut butter image path
+          name: 'Food Spreads',
+          price: 'Upto 75% Off'
+     }
 ];
 
 let sportsHealthcareProducts = [
-  {
-    img: '', // puzzles image
-    name: 'Puzzles & Cubes',
-    price: 'From ₹79'
-  },
-  {
-    img: '', // learning games image
-    name: 'Learning & Educational Games',
-    price: 'Up to 80% Off'
-  },
-  {
-    img: '', // cereal image
-    name: 'Breakfast Cereal',
-    price: 'Upto 75% Off'
-  },
-  {
-    img: '', // musical toys image
-    name: 'Musical Toys',
-    price: 'Under 199'
-  },
-  {
-    img: '', // tea powder image
-    name: 'Tea Powder',
-    price: 'Upto 75% Off'
-  },
-  {
-    img: '', // honey image
-    name: 'Honey',
-    price: 'Upto 75% Off'
-  }
+     {
+          img: '', // puzzles image
+          name: 'Puzzles & Cubes',
+          price: 'From ₹79'
+     },
+     {
+          img: '', // learning games image
+          name: 'Learning & Educational Games',
+          price: 'Up to 80% Off'
+     },
+     {
+          img: '', // cereal image
+          name: 'Breakfast Cereal',
+          price: 'Upto 75% Off'
+     },
+     {
+          img: '', // musical toys image
+          name: 'Musical Toys',
+          price: 'Under 199'
+     },
+     {
+          img: '', // tea powder image
+          name: 'Tea Powder',
+          price: 'Upto 75% Off'
+     },
+     {
+          img: '', // honey image
+          name: 'Honey',
+          price: 'Upto 75% Off'
+     }
 ];

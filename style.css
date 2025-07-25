@@ -266,6 +266,7 @@ nav {
 .slider-container {
     width: 100%;
     display: flex;
+
     justify-content: center;
     position: relative;
     overflow: hidden;
@@ -273,10 +274,13 @@ nav {
 
 .slider {
     width: 95%;
-
     display: flex;
+    /* flex-direction: column; */
     transition: transform 0.5s ease-in-out;
     overflow: hidden;
+    background-color: white;
+    height: 100%;
+    align-items: center;
 }
 
 .previous-btn,
@@ -294,24 +298,97 @@ nav {
     top: 60px;
     left: 37px;
 }
-.next-btn{
-     top: 60px;
+
+.next-btn {
+    top: 60px;
     right: 37px;
 }
-.slider-indicator{
+
+.slider-indicator,
+.electronic-slider-container {
     display: flex;
     justify-content: center;
     margin-top: 10px;
     gap: 8px;
 }
-.indicator{
+
+.indicator {
     width: 15px;
     height: 3px;
     background-color: #b2aeae;
-    transition:all 0.5s ease-in;
+    transition: all 0.5s ease-in;
     border-radius: 10px;
 }
-.indicator.active{
+
+.indicator.active {
     background-color: black;
     width: 40px;
+}
+
+/* product  */
+
+.product-img {
+    width: 152px;
+    height: 152px;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.aside img {
+    width: 236px;
+    height: 362px;
+
+}
+
+.product-img:hover {
+    transform: scale(1.1);
+}
+
+.slider-products {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: white;
+    margin: 10px;
+}
+
+.product-container,
+.products {
+    display: flex;
+    width: 100%;
+}
+
+.product-container {
+    display: flex;
+}
+
+.products {
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.newprop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+.sliderr {
+    width: 95%;
+}
+
+.product-heading p {
+    font-weight: 400;
+    font-size: 22px;
+    padding-left: 16px;
+}
+
+.product-text {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.product-text .b {
+    font-weight: 500;
 }
