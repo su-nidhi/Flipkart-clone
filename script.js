@@ -61,6 +61,7 @@ next.addEventListener('click', () => {
 handlebutonSlider();
 
 //product data
+
 let ElectronicsProduct = [
      {
           img: './images/electronic1.webp',
@@ -104,9 +105,8 @@ let ElectronicsProduct = [
           prize: 'from 6599'
      },
 ];
-let productContainer = document.querySelector('.products');
+let productContainer=document.querySelector('.products')
 ElectronicsProduct.forEach((item) => {
-
      productContainer.innerHTML += `
 <div class="slider-product">
 <img class="product-img" src="${item.img}" alt="">
@@ -115,9 +115,39 @@ ElectronicsProduct.forEach((item) => {
 <p class="b">${item.prize}</p>
 </div>
 </div>`;
-     console.log( item)
 });
 
+//slider js
+let sliderContainer = document.querySelectorAll('.slider-products').forEach(section => {
+     let slider = document.querySelector('.products');
+     let prev2 = document.querySelector('.prev2');
+     let next2 = document.querySelector('.next2');
+     function countAmount() {
+          const card = document.querySelector('.slider-product');
+          return card.offsetWidth + 0;
+     }
+
+     function updatebuttonSlide() {
+          let maxscroll = slider.scrollWidth - slider.clientWidth;
+          prev2.disabled = slider.scrollLeft <= 0;
+          next2.disabled = slider.scrollLeft >= maxscroll;
+     }
+
+     next2.addEventListener('click', () => {
+          slider.scrollLeft += countAmount();
+          updatebuttonSlide();
+     })
+     
+     prev2.addEventListener('click', () => {
+          slider.scrollLeft -= countAmount();
+          updatebuttonSlide();
+     });
+
+     slider.addEventListener('scroll', updatebuttonSlide);
+     window.addEventListener('resize', updatebuttonSlide);
+     updatebuttonSlide()
+
+})
 
 let beautyToysProducts = [
      {
