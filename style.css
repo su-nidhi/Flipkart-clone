@@ -329,21 +329,29 @@ nav {
 .electronic-slider {
     width: 95%;
     display: flex;
+    margin-bottom: 20px;
 }
 
 .slider-products {
     display: flex;
     background-color: white;
-    /* width: 82%; */
 }
 
 .products {
     display: flex;
     overflow-x: hidden;
     scroll-behavior: smooth;
-
     max-width: calc((216px + 6px) * 5);
+}
 
+.slider-product {
+    flex: 0 0 auto;
+    width: 216px;
+    height: 216px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .slider-containerr {
@@ -361,6 +369,7 @@ nav {
     height: 152px;
     object-fit: contain;
 }
+
 .aside img {
     width: 236px;
     height: 362px;
@@ -370,30 +379,94 @@ nav {
     transform: scale(1.1);
 }
 
-.slider-product {
-    flex: 0 0 auto;
-    width: 216px;
-    height: 216px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 .elec-heading {
     font-weight: 400;
     font-size: 22px;
     padding-left: 16px;
     margin-top: 20px;
 }
+
 .products p {
     font-size: 14px;
 }
+
 .product-text {
     text-align: center;
     padding-top: 15px;
 }
+
 .product-text .b {
     font-weight: 500;
-}   
 
+}
 
+/* 4 card section  */
+.card-img img {
+    width: 172px;
+    height: 172px;
+    transition: transform 0.5s ease;
+}
+
+.card-img img:hover {
+    transform: scale(1.1);
+}
+
+.product-card-row {
+    display: flex;
+    margin-bottom: 16px;
+    justify-content: space-evenly;
+}
+
+.product-section-box {
+    width: 468px;
+    height: 630px;
+    background-color: white;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.section-container {
+    width: 97%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.product-card {
+    border: 0.2px solid rgb(205, 204, 204);
+    padding: 14px;
+    border-radius: 5px;
+    width: 222px;
+    height: 266px;
+}
+
+.section-arrow {
+
+    background-color: blue;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.card-title {
+    padding: 15px 0px 0px 0px
+}
+
+.card-offer {
+    font-size: 18px;
+    color: green;
+    padding-top: 5px;
+}
+
+.section-wrapper {
+    justify-content: center;
+    display: flex;
+}

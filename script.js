@@ -118,24 +118,25 @@ ElectronicsProduct.forEach((item) => {
 });
 
 //slider js
-let sliderContainer = document.querySelectorAll('.slider-products').forEach(section => {
+let sliderContainer = document.querySelectorAll('.slider-product').forEach(section=> { 
      let slider = document.querySelector('.products');
      let prev2 = document.querySelector('.prev2');
      let next2 = document.querySelector('.next2');
+
      function countAmount() {
           const card = document.querySelector('.slider-product');
-          return card.offsetWidth + 0;
+          return card.offsetWidth ;
      }
 
      function updatebuttonSlide() {
-          let maxscroll = slider.scrollWidth - slider.clientWidth;
+          let maxscroll = slider.scrollWidth - slider.clientWidth; 
           prev2.disabled = slider.scrollLeft <= 0;
           next2.disabled = slider.scrollLeft >= maxscroll;
      }
 
      next2.addEventListener('click', () => {
           slider.scrollLeft += countAmount();
-          updatebuttonSlide();
+          updatebuttonSlide(); 
      })
      
      prev2.addEventListener('click', () => {
