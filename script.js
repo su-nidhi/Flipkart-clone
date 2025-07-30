@@ -257,16 +257,79 @@ let productGroup = [
                { img: './images/product-card3-4.webp', title: 'Watch', offer: "Min. 50% Off" },
           ],
      },
+     {
+          heading: "Fashion Top Details",
+          products: [
+               { img: './images/product-card4-1.webp', title: 'Shavers', offer: "Min. 50% Off" },
+               { img: './images/product-card4-2.webp', title: 'Trimmer', offer: "Min. 50% Off" },
+               { img: './images/product-card4-3.webp', title: 'Hairdryer', offer: "Min. 50% Off" },
+               { img: './images/product-card4-4.webp', title: 'Camera', offer: "Min. 50% Off" },
+          ],
+     },
+     {
+          heading: "Top Grooming Deals",
+          products: [
+               { img: './images/product-card5-1.webp', title: 'Beard Oil', offer: "Min. 50% Off" },
+               { img: './images/product-card5-2.webp', title: 'Comb', offer: "Min. 50% Off" },
+               { img: './images/product-card5-3.webp', title: 'Face Wash', offer: "Min. 50% Off" },
+               { img: './images/product-card1.webp', title: 'Hair Wax', offer: "Min. 50% Off" },
+          ],
+     },
+     {
+          heading: "Men's Style Essentials",
+          products: [
+               { img: './images/product-card3-1.webp', title: 'Shirt', offer: "Min. 50% Off" },
+               { img: './images/product-card3-2.webp', title: 'Jeans', offer: "Min. 50% Off" },
+               { img: './images/product-card3-3.webp', title: 'Shoes', offer: "Min. 50% Off" },
+               { img: './images/product-card3-4.webp', title: 'Watch', offer: "Min. 50% Off" },
+          ],
+     },
+     {
+          heading: "Fashion Top Details",
+          products: [
+               { img: './images/product-card4-1.webp', title: 'Shavers', offer: "Min. 50% Off" },
+               { img: './images/product-card4-2.webp', title: 'Trimmer', offer: "Min. 50% Off" },
+               { img: './images/product-card4-3.webp', title: 'Hairdryer', offer: "Min. 50% Off" },
+               { img: './images/product-card4-4.webp', title: 'Camera', offer: "Min. 50% Off" },
+          ],
+     },
+     {
+          heading: "Top Grooming Deals",
+          products: [
+               { img: './images/product-card5-1.webp', title: 'Beard Oil', offer: "Min. 50% Off" },
+               { img: './images/product-card5-2.webp', title: 'Comb', offer: "Min. 50% Off" },
+               { img: './images/product-card5-3.webp', title: 'Face Wash', offer: "Min. 50% Off" },
+               { img: './images/product-card1.webp', title: 'Hair Wax', offer: "Min. 50% Off" },
+          ],
+     },
+     {
+          bigImage: true,
+          img: './images/big-img-boxex.webp'
+     },
 ];
 
 
 let secrionContainer = document.querySelector('.section-container');
 
-productGroup.forEach((item) => {
-     let productRow = '';
-     for (let i = 0; i < item.products.length; i += 2) {
-          let rowitem = item.products.slice(i, i + 2).map(product => {
-               return `
+
+
+for (let i = 0; i < productGroup.length; i += 3) {
+     let sectionROW = productGroup.slice(i, i + 3).map((item) => {
+
+          //  Big Image box check
+if(item.bigImage){
+     return`
+   
+     <img src="${item.img}"alt="" style="width:469px; height:696px; object-fit:cover;"/>
+     
+     `
+}
+
+          let productRow = '';
+          for (let j = 0; j < item.products.length; j += 2) {
+
+               let rowitem = item.products.slice(j, j + 2).map(product => {
+                    return `
             <div class="product-card">
                                 <div class="card-img">
                                     <img src="${product.img}" alt="">
@@ -274,11 +337,11 @@ productGroup.forEach((item) => {
                                 <div class="card-title"> ${product.title}</div>
                                 <div class="card-offer"><p>${product.offer}</p></div>
                             </div>`;
-          }).join('');
+               }).join('');
 
-          productRow += `<div class="product-card-row">${rowitem}</div>`;
-     }
-     secrionContainer.innerHTML += `
+               productRow += `<div class="product-card-row">${rowitem}</div>`;
+          }
+          return `
       <div class="product-section-box">
                     <div class="section-header">
                         <div class="section-title"><h1>${item.heading}</h1></div>
@@ -286,8 +349,9 @@ productGroup.forEach((item) => {
                     </div>
                      <div class="products-cards">${productRow}</div></div>
                     `;
-});
+     }).join(' ');
+     secrionContainer.innerHTML += `<div class="section-row">${sectionROW}</div>`
 
 
-
+}
 

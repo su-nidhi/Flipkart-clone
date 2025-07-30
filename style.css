@@ -416,11 +416,11 @@ nav {
     justify-content: space-evenly;
 }
 
-.product-section-box {
+/* .product-section-box {
     width: 468px;
     height: 630px;
     background-color: white;
-}
+} */
 
 .section-header {
     display: flex;
@@ -432,7 +432,9 @@ nav {
 .section-container {
     width: 97%;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+       gap: 30px; 
 }
 
 .product-card {
@@ -441,6 +443,7 @@ nav {
     border-radius: 5px;
     width: 222px;
     height: 266px;
+    margin: 10px;
 }
 
 .section-arrow {
@@ -468,4 +471,19 @@ nav {
 .section-wrapper {
     justify-content: center;
     display: flex;
+}
+.section-row {
+  display: flex;
+  flex-wrap: nowrap;   /* don’t wrap to next line */
+  justify-content: space-between; /* spacing between boxes */
+  gap: 20px; /* optional spacing */
+  margin-bottom: 40px; /* spacing between top and bottom row */
+}
+.product-section-box {
+  width: 32%; /* 3 items will fit in 100% row with spacing */
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #fff;
 }
