@@ -216,7 +216,6 @@ nav {
 .category-list {
     position: absolute;
     top: 90px;
-
     z-index: 100;
     visibility: hidden;
     opacity: 0;

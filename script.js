@@ -105,7 +105,7 @@ let ElectronicsProduct = [
           prize: 'from 6599'
      },
 ];
-let productContainer=document.querySelector('.products')
+let productContainer = document.querySelector('.products')
 ElectronicsProduct.forEach((item) => {
      productContainer.innerHTML += `
 <div class="slider-product">
@@ -118,27 +118,27 @@ ElectronicsProduct.forEach((item) => {
 });
 
 //slider js
-let sliderContainer = document.querySelectorAll('.slider-product').forEach(section=> { 
+let sliderContainer = document.querySelectorAll('.slider-product').forEach(section => {
      let slider = document.querySelector('.products');
      let prev2 = document.querySelector('.prev2');
      let next2 = document.querySelector('.next2');
 
      function countAmount() {
           const card = document.querySelector('.slider-product');
-          return card.offsetWidth ;
+          return card.offsetWidth;
      }
 
      function updatebuttonSlide() {
-          let maxscroll = slider.scrollWidth - slider.clientWidth; 
+          let maxscroll = slider.scrollWidth - slider.clientWidth;
           prev2.disabled = slider.scrollLeft <= 0;
           next2.disabled = slider.scrollLeft >= maxscroll;
      }
 
      next2.addEventListener('click', () => {
           slider.scrollLeft += countAmount();
-          updatebuttonSlide(); 
+          updatebuttonSlide();
      })
-     
+
      prev2.addEventListener('click', () => {
           slider.scrollLeft -= countAmount();
           updatebuttonSlide();
@@ -225,3 +225,69 @@ let sportsHealthcareProducts = [
           price: 'Upto 75% Off'
      }
 ];
+
+
+
+//4 box groups
+let productGroup = [
+     {
+          heading: "Fashion Top Details",
+          products: [
+               { img: './images/product-card1.webp', title: 'Shavers', offer: "Min. 50% Off" },
+               { img: './images/product-card2.webp', title: 'Trimmer', offer: "Min. 50% Off" },
+               { img: './images/product-card3.webp', title: 'Hairdryer', offer: "Min. 50% Off" },
+               { img: './images/product-card4.webp', title: 'Camera', offer: "Min. 50% Off" },
+          ],
+     },
+     {
+          heading: "Top Grooming Deals",
+          products: [
+               { img: './images/product-cardg-2.webp', title: 'Beard Oil', offer: "Min. 50% Off" },
+               { img: './images/product-cardg-2-2.webp', title: 'Comb', offer: "Min. 50% Off" },
+               { img: './images/product-card-g2-3.webp', title: 'Face Wash', offer: "Min. 50% Off" },
+               { img: './images/product-card2-4.webp', title: 'Hair Wax', offer: "Min. 50% Off" },
+          ],
+     },
+     {
+          heading: "Men's Style Essentials",
+          products: [
+               { img: './images/product-card3-1.webp', title: 'Shirt', offer: "Min. 50% Off" },
+               { img: './images/product-card3-2.webp', title: 'Jeans', offer: "Min. 50% Off" },
+               { img: './images/product-card3-3.webp', title: 'Shoes', offer: "Min. 50% Off" },
+               { img: './images/product-card3-4.webp', title: 'Watch', offer: "Min. 50% Off" },
+          ],
+     },
+];
+
+
+let secrionContainer = document.querySelector('.section-container');
+
+productGroup.forEach((item) => {
+     let productRow = '';
+     for (let i = 0; i < item.products.length; i += 2) {
+          let rowitem = item.products.slice(i, i + 2).map(product => {
+               return `
+            <div class="product-card">
+                                <div class="card-img">
+                                    <img src="${product.img}" alt="">
+                                </div>
+                                <div class="card-title"> ${product.title}</div>
+                                <div class="card-offer"><p>${product.offer}</p></div>
+                            </div>`;
+          }).join('');
+
+          productRow += `<div class="product-card-row">${rowitem}</div>`;
+     }
+     secrionContainer.innerHTML += `
+      <div class="product-section-box">
+                    <div class="section-header">
+                        <div class="section-title"><h1>${item.heading}</h1></div>
+                        <div class="section-arrow"><i class="bi bi-chevron-right"></i></div>
+                    </div>
+                     <div class="products-cards">${productRow}</div></div>
+                    `;
+});
+
+
+
+
