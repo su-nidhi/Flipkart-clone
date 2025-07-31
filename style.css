@@ -404,6 +404,7 @@ nav {
     width: 172px;
     height: 172px;
     transition: transform 0.5s ease;
+    object-fit: contain;
 }
 
 .card-img img:hover {
@@ -416,11 +417,7 @@ nav {
     justify-content: space-evenly;
 }
 
-/* .product-section-box {
-    width: 468px;
-    height: 630px;
-    background-color: white;
-} */
+
 
 .section-header {
     display: flex;

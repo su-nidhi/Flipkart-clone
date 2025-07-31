@@ -293,66 +293,113 @@ let cardData = [
 
           ]
      },
-       {
-          titleCard: 'Beauty,Food,Toyes & More',
+     {
+          titleCard: 'Sport HealthCare & More',
           data: [
-               { img: './images/card-img-1.webp', productName: 'cycle', productOffer: 'Upto 80% off' },
-               { img: './images/card-img-2.webp', productName: 'coffe', productOffer: 'Upto 80% off' },
-               { img: './images/card-img-3.webp', productName: 'stationarry', productOffer: 'Upto 80% off' },
-               { img: './images/card-img-4.webp', productName: 'action toy', productOffer: 'Upto 80% off' },
-               { img: './images/card-img-5.webp', productName: 'remote control toyes', productOffer: 'Upto 80% off' },
-               { img: './images/card-img-6.jpeg', productName: 'soft toy', productOffer: 'Upto 80% off' },
-               { img: './images/card-img-7.jpeg', productName: 'dry fruit', productOffer: 'Upto 80% off' },
-               { img: './images/card-img-8.jpeg', productName: 'icecreame', productOffer: 'Upto 80% off' },
+               { img: './images/card2-img1.webp', productName: 'cycle', productOffer: 'Upto 80% off' },
+               { img: './images/card2-img2.webp', productName: 'coffe', productOffer: 'Upto 80% off' },
+               { img: './images/card2-img3.webp', productName: 'stationarry', productOffer: 'Upto 80% off' },
+               { img: './images/card2-img4.webp', productName: 'action toy', productOffer: 'Upto 80% off' },
+               { img: './images/card2-img5.webp', productName: 'remote control toyes', productOffer: 'Upto 80% off' },
+               { img: './images/card2-img6.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
+
+
+          ]
+     },
+      {
+          titleCard: 'Furniture deals',
+          data: [
+               { img: './images/card3-img1.webp', productName: 'cycle', productOffer: 'Upto 80% off' },
+               { img: './images/card3-img2.webp', productName: 'coffe', productOffer: 'Upto 80% off' },
+               { img: './images/card3-img3.webp', productName: 'stationarry', productOffer: 'Upto 80% off' },
+               { img: './images/card3-img4.webp', productName: 'action toy', productOffer: 'Upto 80% off' },
+               { img: './images/card3-img5.webp', productName: 'remote control toyes', productOffer: 'Upto 80% off' },
+               { img: './images/card3-img6.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
+               { img: './images/card3-img7.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
+               { img: './images/card3-img8.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
+
+
+          ]
+     },
+       {
+          titleCard: 'Top deals',
+          data: [
+               { img: './images/card4-img1.jpeg', productName: 'cycle', productOffer: 'Upto 80% off' },
+               { img: './images/card4-img2.webp', productName: 'coffe', productOffer: 'Upto 80% off' },
+               { img: './images/card4-img3.webp', productName: 'stationarry', productOffer: 'Upto 80% off' },
+               { img: './images/card4-img4.webp', productName: 'action toy', productOffer: 'Upto 80% off' },
+               { img: './images/card4-img5.webp', productName: 'remote control toyes', productOffer: 'Upto 80% off' },
+               { img: './images/card4-img6.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
+               { img: './images/card4-img7.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
+               { img: './images/card4-img8.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
+
 
           ]
      }
-];
-let wrapper = document.querySelector('.cards-slider-container-wrapper');
-// let cardContainerr = document.querySelector('.cards-slider .cards')
 
-cardData.forEach((item,index)=>{
-let cardHtml=item.data.map(product=>`
+];
+
+
+
+let cardDataTop = cardData.slice(0, 2);     // First 2 sliders
+let cardDataBottom = cardData.slice(2);
+
+function createCardSlider(item, index) {
+     const uniqueId = `cards-${index}`;
+
+     const cardHtml = item.data.map(product => `
       <div class="card">
             <img src="${product.img}" />
             <p>${product.productName}</p>
             <p>${product.productOffer}</p>
         </div>
-     `).join( '');
+     `).join('');
 
 
-     wrapper.innerHTML+=`
-           <div class="card-slider-container">
+
+     const wrapper = document.createElement('div');
+     wrapper.className = 'card-slider-container';
+     wrapper.innerHTML = `
+    
             <div class="heading-cards">${item.titleCard}</div>
             <div class="cards" id="cards-${index}">
                 ${cardHtml}
             </div>
             <div class="controls">
-                <i class="bi bi-chevron-left prev3 data-target="cards-${index} prev2"></i>
-                      <i class="bi bi-chevron-right next3 data-target="cards-${index} next2"></i>
+            <i class="bi bi-chevron-left prev3" data-target="${uniqueId}"></i>
+            <i class="bi bi-chevron-right next3" data-target="${uniqueId}"></i>
+
+
             </div>
-        </div>
-    `;
-     
+    
+`;
+     return wrapper;
+}
+// Add sliders to top
+const sliderTop = document.getElementById('slider-top');
+cardDataTop.forEach((item, index) => {
+     sliderTop.appendChild(createCardSlider(item, index));
+});
+
+// Add sliders to bottom
+const sliderBottom = document.getElementById('slider-bottom');
+cardDataBottom.forEach((item, index) => {
+     sliderBottom.appendChild(createCardSlider(item, index + cardDataTop.length));
 })
 
-
-
-document.querySelectorAll('.card-slider-container').forEach(container => {
-    const cards = container.querySelector('.cards');
-    const card = container.querySelector('.card');
-    if (!card) return;
-
-    const prevBtn = container.querySelector('.prev3');
-    const nextBtn = container.querySelector('.next3');
-    const scrollAmount = card.offsetWidth + 15;
-
-    prevBtn.addEventListener('click', () => {
-        cards.scrollLeft -= scrollAmount;
-    });
-
-    nextBtn.addEventListener('click', () => {
-        cards.scrollLeft += scrollAmount;
-    });
+document.addEventListener('click', function (e) {
+     if (e.target.classList.contains('prev3') || e.target.classList.contains('next3')) {
+          const targetId = e.target.getAttribute('data-target');
+          const scrollContainer = document.getElementById(targetId);
+          const scrollAmount = scrollContainer.querySelector('.card')?.offsetWidth + 15 || 200;
+          if (e.target.classList.contains('prev3')) {
+               scrollContainer.scrollLeft -= scrollAmount;
+          } else {
+               scrollContainer.scrollLeft += scrollAmount;
+          }
+     }
 });
+
+
+
 
