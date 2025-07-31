@@ -150,81 +150,7 @@ let sliderContainer = document.querySelectorAll('.slider-product').forEach(secti
 
 })
 
-let beautyToysProducts = [
-     {
-          img: '', // coffee powder image path
-          name: 'Coffee Powder',
-          price: 'Upto 80% Off'
-     },
-     {
-          img: '', // soft toys image path
-          name: 'Soft Toys',
-          price: 'Upto 70% Off'
-     },
-     {
-          img: '', // stationery image path
-          name: 'Top Selling Stationery',
-          price: 'From ₹49'
-     },
-     {
-          img: '', // remote toy image path
-          name: 'Remote Control Toys',
-          price: 'Up to 80% Off'
-     },
-     {
-          img: '', // action toys image path
-          name: 'Best of Action Toys',
-          price: 'Up to 70% Off'
-     },
-     {
-          img: '', // dry fruits image path
-          name: 'Dry Fruits',
-          price: 'Upto 75% Off'
-     },
-     {
-          img: '', // cycle image path
-          name: 'Geared Cycles',
-          price: 'Up to 70% Off'
-     },
-     {
-          img: '', // peanut butter image path
-          name: 'Food Spreads',
-          price: 'Upto 75% Off'
-     }
-];
 
-let sportsHealthcareProducts = [
-     {
-          img: '', // puzzles image
-          name: 'Puzzles & Cubes',
-          price: 'From ₹79'
-     },
-     {
-          img: '', // learning games image
-          name: 'Learning & Educational Games',
-          price: 'Up to 80% Off'
-     },
-     {
-          img: '', // cereal image
-          name: 'Breakfast Cereal',
-          price: 'Upto 75% Off'
-     },
-     {
-          img: '', // musical toys image
-          name: 'Musical Toys',
-          price: 'Under 199'
-     },
-     {
-          img: '', // tea powder image
-          name: 'Tea Powder',
-          price: 'Upto 75% Off'
-     },
-     {
-          img: '', // honey image
-          name: 'Honey',
-          price: 'Upto 75% Off'
-     }
-];
 
 
 
@@ -317,13 +243,12 @@ for (let i = 0; i < productGroup.length; i += 3) {
      let sectionROW = productGroup.slice(i, i + 3).map((item) => {
 
           //  Big Image box check
-if(item.bigImage){
-     return`
+          if (item.bigImage) {
+               return `
    
      <img src="${item.img}"alt="" style="width:469px; height:696px; object-fit:cover;"/>
      
-     `
-}
+     `}
 
           let productRow = '';
           for (let j = 0; j < item.products.length; j += 2) {
@@ -351,7 +276,83 @@ if(item.bigImage){
                     `;
      }).join(' ');
      secrionContainer.innerHTML += `<div class="section-row">${sectionROW}</div>`
-
-
 }
+//sm-card-data
+let cardData = [
+     {
+          titleCard: 'Beauty,Food,Toyes & More',
+          data: [
+               { img: './images/card-img-1.webp', productName: 'cycle', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-2.webp', productName: 'coffe', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-3.webp', productName: 'stationarry', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-4.webp', productName: 'action toy', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-5.webp', productName: 'remote control toyes', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-6.jpeg', productName: 'soft toy', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-7.jpeg', productName: 'dry fruit', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-8.jpeg', productName: 'icecreame', productOffer: 'Upto 80% off' },
+
+          ]
+     },
+       {
+          titleCard: 'Beauty,Food,Toyes & More',
+          data: [
+               { img: './images/card-img-1.webp', productName: 'cycle', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-2.webp', productName: 'coffe', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-3.webp', productName: 'stationarry', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-4.webp', productName: 'action toy', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-5.webp', productName: 'remote control toyes', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-6.jpeg', productName: 'soft toy', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-7.jpeg', productName: 'dry fruit', productOffer: 'Upto 80% off' },
+               { img: './images/card-img-8.jpeg', productName: 'icecreame', productOffer: 'Upto 80% off' },
+
+          ]
+     }
+];
+let wrapper = document.querySelector('.cards-slider-container-wrapper');
+// let cardContainerr = document.querySelector('.cards-slider .cards')
+
+cardData.forEach((item,index)=>{
+let cardHtml=item.data.map(product=>`
+      <div class="card">
+            <img src="${product.img}" />
+            <p>${product.productName}</p>
+            <p>${product.productOffer}</p>
+        </div>
+     `).join( '');
+
+
+     wrapper.innerHTML+=`
+           <div class="card-slider-container">
+            <div class="heading-cards">${item.titleCard}</div>
+            <div class="cards" id="cards-${index}">
+                ${cardHtml}
+            </div>
+            <div class="controls">
+                <i class="bi bi-chevron-left prev3 data-target="cards-${index} prev2"></i>
+                      <i class="bi bi-chevron-right next3 data-target="cards-${index} next2"></i>
+            </div>
+        </div>
+    `;
+     
+})
+
+
+
+document.querySelectorAll('.card-slider-container').forEach(container => {
+    const cards = container.querySelector('.cards');
+    const card = container.querySelector('.card');
+    if (!card) return;
+
+    const prevBtn = container.querySelector('.prev3');
+    const nextBtn = container.querySelector('.next3');
+    const scrollAmount = card.offsetWidth + 15;
+
+    prevBtn.addEventListener('click', () => {
+        cards.scrollLeft -= scrollAmount;
+    });
+
+    nextBtn.addEventListener('click', () => {
+        cards.scrollLeft += scrollAmount;
+    });
+});
 
