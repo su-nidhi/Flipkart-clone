@@ -127,13 +127,11 @@ let sliderContainer = document.querySelectorAll('.slider-product').forEach(secti
           const card = document.querySelector('.slider-product');
           return card.offsetWidth;
      }
-
      function updatebuttonSlide() {
           let maxscroll = slider.scrollWidth - slider.clientWidth;
           prev2.disabled = slider.scrollLeft <= 0;
           next2.disabled = slider.scrollLeft >= maxscroll;
      }
-
      next2.addEventListener('click', () => {
           slider.scrollLeft += countAmount();
           updatebuttonSlide();
@@ -149,10 +147,6 @@ let sliderContainer = document.querySelectorAll('.slider-product').forEach(secti
      updatebuttonSlide()
 
 })
-
-
-
-
 
 //4 box groups
 let productGroup = [
@@ -233,23 +227,15 @@ let productGroup = [
           img: './images/big-img-boxex.webp'
      },
 ];
-
-
 let secrionContainer = document.querySelector('.section-container');
-
-
-
 for (let i = 0; i < productGroup.length; i += 3) {
      let sectionROW = productGroup.slice(i, i + 3).map((item) => {
 
-          //  Big Image box check
+     //  Big Image box check
           if (item.bigImage) {
                return `
-   
      <img src="${item.img}"alt="" style="width:469px; height:696px; object-fit:cover;"/>
-     
      `}
-
           let productRow = '';
           for (let j = 0; j < item.products.length; j += 2) {
 
@@ -277,6 +263,7 @@ for (let i = 0; i < productGroup.length; i += 3) {
      }).join(' ');
      secrionContainer.innerHTML += `<div class="section-row">${sectionROW}</div>`
 }
+
 //sm-card-data
 let cardData = [
      {
@@ -302,11 +289,9 @@ let cardData = [
                { img: './images/card2-img4.webp', productName: 'action toy', productOffer: 'Upto 80% off' },
                { img: './images/card2-img5.webp', productName: 'remote control toyes', productOffer: 'Upto 80% off' },
                { img: './images/card2-img6.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
-
-
           ]
      },
-      {
+     {
           titleCard: 'Furniture deals',
           data: [
                { img: './images/card3-img1.webp', productName: 'cycle', productOffer: 'Upto 80% off' },
@@ -317,11 +302,9 @@ let cardData = [
                { img: './images/card3-img6.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
                { img: './images/card3-img7.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
                { img: './images/card3-img8.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
-
-
           ]
      },
-       {
+     {
           titleCard: 'Top deals',
           data: [
                { img: './images/card4-img1.jpeg', productName: 'cycle', productOffer: 'Upto 80% off' },
@@ -332,21 +315,15 @@ let cardData = [
                { img: './images/card4-img6.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
                { img: './images/card4-img7.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
                { img: './images/card4-img8.webp', productName: 'soft toy', productOffer: 'Upto 80% off' },
-
-
           ]
      }
 
 ];
-
-
-
 let cardDataTop = cardData.slice(0, 2);     // First 2 sliders
 let cardDataBottom = cardData.slice(2);
 
 function createCardSlider(item, index) {
      const uniqueId = `cards-${index}`;
-
      const cardHtml = item.data.map(product => `
       <div class="card">
             <img src="${product.img}" />
@@ -354,9 +331,6 @@ function createCardSlider(item, index) {
             <p>${product.productOffer}</p>
         </div>
      `).join('');
-
-
-
      const wrapper = document.createElement('div');
      wrapper.className = 'card-slider-container';
      wrapper.innerHTML = `
@@ -368,10 +342,7 @@ function createCardSlider(item, index) {
             <div class="controls">
             <i class="bi bi-chevron-left prev3" data-target="${uniqueId}"></i>
             <i class="bi bi-chevron-right next3" data-target="${uniqueId}"></i>
-
-
             </div>
-    
 `;
      return wrapper;
 }
